@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 
 import "./Namecard.css"
 import Cardskeleton from './Cardskeleton';
+import Loadingicon from './Loadingicon';
 
 
 function Home() {
@@ -16,12 +17,12 @@ function Home() {
 
     
 
-        const res = await fetch (`https://jsonplaceholder.typicode.com/posts?_limit=9&_page=${page}`);
+        const res = await fetch (`https://randomuser.me/api/?page=${page}&results=10`);
         const data = await res.json();
         
       setTimeout(()=>{
         setLoading(false)
-        setUser((prev)=> [ ...prev, ...data]);
+        setUser((prev)=> [ ...prev, ...data.results]);
       },1300)
       
        
@@ -77,17 +78,20 @@ console.log(user);
 
 
     {loading &&<Cardskeleton cards={8}/>}
+
+    
    
      {user.map((el,i)=>(
           <div className='single-card' key={i}>
-            <img className='avatar' src='https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80'/>
-            <p>{el.title}</p>
-           <p>{el.body}</p>
+            <img className='avatar' src={el.picture.large}/>
+            <h3>{el.name.first} {el.name.last}</h3>
+           <p>{el.email}</p>
+           <h5>{el.location.country}</h5>
           </div>
      ))}
      </div>
 
-     {spinner && <h1>.......Loading! please Wait</h1>}
+     {spinner && <Loadingicon/>}
 
 
      

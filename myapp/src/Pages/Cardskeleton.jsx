@@ -8,13 +8,18 @@ function Cardskeleton({cards}) {
   .map((item,i)=>(
     <div key={i}>
      <div>
-      <Skeleton height={140}/>
+      <Skeleton height={330}/>
      </div>
      <div>
-      <Skeleton height={50}/>
+      <Skeleton height={40}/>
      </div>
+     <br />
      <div>
-      <Skeleton height={150}/>
+      <Skeleton height={30}/>
+     </div>
+     <br />
+     <div>
+      <Skeleton height={20}/>
      </div>
     </div>
   ))
