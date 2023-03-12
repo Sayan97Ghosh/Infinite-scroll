@@ -1,6 +1,7 @@
 import React from 'react'
 import { isLoggedIn } from '../Auth/Auth'
 import "./Navbar.css";
+import logo from "./logo.png";
 function Navbar() {
     const status = isLoggedIn();
 
@@ -11,7 +12,7 @@ function Navbar() {
     }
   return (
     <div className='navbar'>
-        <img src='This is for logo'/>
+        <img className='logo' src={logo}/>
 
         <div className='items'>
         <p><a href="/private/home">

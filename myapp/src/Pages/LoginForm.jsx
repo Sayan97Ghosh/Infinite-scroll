@@ -3,7 +3,7 @@ import "./LoginForm.css";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Navigate } from "react-router-dom";
+
 const LoginForm = () => {
   
   const [username, setUsername] = useState("");
@@ -14,7 +14,11 @@ const LoginForm = () => {
  console.log(data)
 
 
+  // useNavigate
 
+ 
+
+  // handlesubmit function bellow
 
   const handleSubmit = (e) => {
    e.preventDefault();
@@ -24,7 +28,7 @@ const LoginForm = () => {
    if(data.name === username && data.password === password ){
       localStorage.setItem("token",JSON.stringify(1234))
 
-      toast('🦄 Login Successful!', {
+      toast('🦄 Login Successful!Home Access Granted', {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -36,9 +40,10 @@ const LoginForm = () => {
         });
         setTimeout(()=>{
           window.location.reload();
+          
         },1300);
+       
 
-        <Navigate to={"/private/home"}/>
       
    }
    else if (data.name == null && data.password == null) {

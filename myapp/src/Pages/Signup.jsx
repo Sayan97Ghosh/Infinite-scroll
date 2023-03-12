@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./LoginForm.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,7 +16,9 @@ const SignupForm = () => {
   }
 
 
+  //  useNavigate hook
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     if(username && password){
@@ -31,8 +33,12 @@ const SignupForm = () => {
           progress: undefined,
           theme: "light",
           });
+
+          setTimeout(()=>{
+
+            navigate("/")
+          },1300)
           
-        <Navigate to ={"/"}/>
     }
     else{
        alert("Please Enter all the details")
